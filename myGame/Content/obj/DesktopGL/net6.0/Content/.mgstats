@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/Users/Alex/Desktop/MonoGame/myGame/Content/ball.png","/Users/Alex/Desktop/MonoGame/myGame/Content/bin/DesktopGL/Content/ball.xnb","TextureProcessor","Texture2DContent",8368,16469,1.011145
+"/Users/Alex/Desktop/MonoGame/myGame/Content/blank.png","/Users/Alex/Desktop/MonoGame/myGame/Content/bin/DesktopGL/Content/blank.xnb","TextureProcessor","Texture2DContent",68,89,0.328357
