@@ -19,19 +19,19 @@ namespace myGame {
                 switch (key) {
                     case Keys.W:
                     case Keys.Up:
-                    sprite.mySprite.ChangePosition(changeY:(int)Direction.Top*sprite.mySprite.movementSpeed);
+                    sprite.mySprite.ChangePosition(changeY:(int)Direction.Up*sprite.mySprite.movementSpeed);
                     break;
                     case Keys.A:
                     case Keys.Left:
-                    sprite.mySprite.ChangePosition(changeX:(int)Direction.Right*sprite.mySprite.movementSpeed);
+                    sprite.mySprite.ChangePosition(changeX:(int)Direction.Left*sprite.mySprite.movementSpeed);
                     break;
                     case Keys.S:
                     case Keys.Down:
-                    sprite.mySprite.ChangePosition(changeY:(int)Direction.Bottom*sprite.mySprite.movementSpeed);
+                    sprite.mySprite.ChangePosition(changeY:(int)Direction.Down*sprite.mySprite.movementSpeed);
                     break;
                     case Keys.D:
                     case Keys.Right:
-                    sprite.mySprite.ChangePosition(changeX:(int)Direction.Left*sprite.mySprite.movementSpeed);
+                    sprite.mySprite.ChangePosition(changeX:(int)Direction.Right*sprite.mySprite.movementSpeed);
                     break;
                 }
             }

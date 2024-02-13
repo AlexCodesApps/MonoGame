@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 enum Direction {
-    Top = -1, Left = 1, Bottom = 1, Right = -1, Null = 0
+    Up = -1, Left = -1, Down = 1, Right = 1, Null = 0
 }
 namespace myGame {
 
@@ -56,20 +56,20 @@ namespace myGame {
             xMoveDirection = Direction.Null;
             if (hitbox.y1 > y1 &&  y1 > hitbox.y2) {
                 yOverlap = true;
-                yMoveDirection = Direction.Top;
+                yMoveDirection = Direction.Up;
                 Console.WriteLine("Top");
             }
             else if (hitbox.y1 > y2 && y2 > hitbox.y2) {
                 yOverlap = true;
-                yMoveDirection = Direction.Bottom;
+                yMoveDirection = Direction.Down;
                 Console.WriteLine("Bottom");
             }
-            if (hitbox.x1 < x1 && x1 < hitbox.x2) {
+            if (hitbox.x1 < x2 && x2 < hitbox.x2) {
                 xOverlap = true;
                 xMoveDirection = Direction.Left;
                 Console.WriteLine("Left");
             }
-            else if (hitbox.x1 < x2 && x2 < hitbox.x2) {
+            else if (hitbox.x1 < x1 && x1 < hitbox.x2) {
                 xOverlap = true;
                 xMoveDirection = Direction.Right;
                 Console.WriteLine("Right");
