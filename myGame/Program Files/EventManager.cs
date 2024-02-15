@@ -1,0 +1,5 @@
+namespace myGame {
+    class EventManager {
+        
+    }
+}

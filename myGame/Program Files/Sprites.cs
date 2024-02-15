@@ -13,9 +13,9 @@ namespace myGame {
     public Texture2D myTexture;
     public Rectangle myRect = new Rectangle();
     public Rectangle myImgRect;
-    public int centerToX;
-    public int centerToY;
-    public int movementSpeed = 0;
+    public int centerToX, centerToY;
+    public bool upRestrict = false, downRestrict = false, leftRestrict = false, rightRestrict = false;
+    public float movementSpeed = 0;
 
     public static List<Sprite> spriteList = new List<Sprite>();
     public Sprite(Game1 game, string image = "blank", int width = 16, int height = 16, int x = 0, int y = 0, float z = 0, bool textureSize = false) {
@@ -33,16 +33,20 @@ namespace myGame {
             if (textureSize) {myRect.Width = myTexture.Width; myRect.Height = myTexture.Height;}
             SetImgRect();
         }
-        public void ChangePosition(int changeX = 0, int changeY = 0) {
+        public void ChangePosition(float changeX = 0, float changeY = 0) {
             myPosition = new Vector2(myPosition.X + changeX, myPosition.Y + changeY);
-            myRect.X = (int)(myPosition.X + myGame.Origin.X);
-            myRect.Y = (int)(myPosition.Y + myGame.Origin.Y);
+            SetGamePosition();
             CenterToSidesDistance();
         }
-        public void SetPosition(int x, int y) {
+        public void SetPosition(float x, float y) {
             myPosition = new Vector2(x, y);
-            myRect.X = (int)(myPosition.X + myGame.Origin.X);
-            myRect.Y = (int)(myPosition.Y + myGame.Origin.Y);
+            SetGamePosition();
+            CenterToSidesDistance();
+        }
+
+        public void SetPosition(Vector2 vector2) {
+            myPosition = vector2;
+            SetGamePosition();
             CenterToSidesDistance();
         }
 
@@ -67,6 +71,11 @@ namespace myGame {
         private void CenterToSidesDistance() {
             centerToX = myRect.Width/2;
             centerToY = myRect.Height/2;
+        }
+
+        private void SetGamePosition() {
+            myRect.X = (int)(myPosition.X + myGame.Origin.X);
+            myRect.Y = (int)(myPosition.Y + myGame.Origin.Y);
         }
 
         public static List<Sprite> OrderRenderListByZ() => spriteList.OrderBy(x => x.myZ).ToList();

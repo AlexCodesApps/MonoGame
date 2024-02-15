@@ -12,46 +12,41 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private List<Sprite> _spritesInRenderOrder;
     public Vector2 Origin;
-    SpriteEntity Block1;
-    SpriteEntity Block2;
+    SpriteEntity Block1, Block2;
 
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
+        //  Disabled v-sync, unlocking fps
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
         Origin = new Vector2(_graphics.PreferredBackBufferWidth/2, _graphics.PreferredBackBufferHeight/2);
         Console.WriteLine("Console Works.");
         base.Initialize();
+        
     }
 
     protected override void LoadContent()
     {
+    // Make a new system for Content Loading
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         Block1 = new SpriteEntity(this, "ball", 0, 0, -100, -50, 1, true);
-        Block2 = new SpriteEntity(this, "ball", 0, 0, 100, 50, 0, true);
-        Block1.mySprite.movementSpeed = 1;
+        Block2 = new SpriteEntity(this, "ball", 0, 0, 100, 50, 0, true, false);
+        Block1.mySprite.movementSpeed = 10;
         InputManager.MoveSprite(Block1);
-
-        // TODO: use this.Content to load your game content here
     }
 
     protected override void Update(GameTime gameTime)
 {
-    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-        Exit();
-
-    // Update logic for Block1
-    InputManager.ParseInput();
-    // Other update logic...
+    /*if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        Exit();*/
+    // Respective Classes Update Logic
     Hitbox.UpdateHitboxes();
-
-
+    InputManager.ParseInput();
     base.Update(gameTime); // Should always be last!
 }
 
@@ -67,6 +62,7 @@ public class Game1 : Game
             _spriteBatch.Draw(i.myTexture, i.myRect, i.myImgRect, Color.White);
         }
         _spriteBatch.End();
+        
 
 
         base.Draw(gameTime);
